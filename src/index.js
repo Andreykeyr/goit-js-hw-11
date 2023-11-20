@@ -91,6 +91,13 @@ async function onSubmit(event) {
   gallery.innerHTML = '';
   page = 1;
   query = form.elements.searchQuery.value;
+    if (!form.elements.searchQuery.value) {
+      Notify.failure( 
+        `Sorry, you need to fill the field!`
+      );
+
+      return
+    };
 
     try {
       let response = await getImages(page, query);
